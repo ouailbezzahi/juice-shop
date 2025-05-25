@@ -1,0 +1,17 @@
+name: Generate SBOM
+on: [push]
+jobs:
+  generate-sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate CycloneDX SBOM
+        uses: cyclonedx/gh-action-generate-sbom@v1
+        with:
+          output-format: "json"
+          output-file: "bom.json"
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbom-json
+          path: bom.json
