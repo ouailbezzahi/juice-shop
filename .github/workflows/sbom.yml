@@ -19,6 +19,8 @@ jobs:
         run: npm install -g @cyclonedx/cyclonedx-npm
       - name: Generate SBOM
         run: cyclonedx-npm --output-file bom.json
+      - name: Verify SBOM File
+        run: ls -l bom.json
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v3
         with:
