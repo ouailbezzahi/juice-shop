@@ -6,12 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate CycloneDX SBOM
-        uses: cyclonedx/gh-action-generate-sbom@v1
-        with:
-          output-format: "json"
-          output-file: "bom.json"
-      - name: Upload SBOM artifact
+        uses: CycloneDX/gh-action-generate-sbom@v1
+      - name: Upload SBOM
         uses: actions/upload-artifact@v3
         with:
-          name: sbom-json
+          name: sbom.json
           path: bom.json
